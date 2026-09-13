@@ -1,0 +1,151 @@
+generated: '2026-09-13'
+method: probed
+source: live GET of each named /.well-known/ path on every host the record knows
+hit_count: 0
+note: >-
+  Every named discovery path was probed on all three reachable Agrolend hosts and every one missed.
+  No WellKnown or SecurityTxt pointer is emitted: this file records an absence, not a surface.
+  The two hosts are honest about it - agrolend.agr.br returns a real WordPress 404 page and
+  parceiro.agrolend.agr.br returns its JSON 401 envelope, and both answered a negative-control path
+  identically to the real ones, so neither is a catch-all that would fake a hit.
+path_echo_control: passed
+hosts:
+- host: https://agrolend.agr.br
+  server: WordPress 6.7.7 behind CloudFront
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog.json
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/aauth-resource.json
+    status: 404
+    file: null
+  - path: /.well-known/ucp.json
+    status: 404
+    file: null
+  - path: /.well-known/acp.json
+    status: 404
+    file: null
+  - path: /.well-known/apis.json
+    status: 404
+    file: null
+  - path: /apis.json
+    status: 404
+    file: null
+  - path: /apis.yml
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+  - path: /llms.txt
+    status: 404
+    file: null
+  soft_404_control:
+    path: /.well-known/agrolend-negative-control-7f3ab91c.json
+    status: 404
+    bytes: 65780
+    note: Identical WordPress 404 body as every other miss - not a catch-all.
+- host: https://www.agrolend.agr.br
+  server: CloudFront redirect to the apex
+  documents:
+  - path: /.well-known/security.txt
+    status: 301
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 301
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 301
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 301
+    file: null
+  - path: /.well-known/api-catalog
+    status: 301
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 301
+    file: null
+  - path: /.well-known/aauth-resource.json
+    status: 301
+    file: null
+  - path: /.well-known/apis.json
+    status: 301
+    file: null
+  - path: /apis.json
+    status: 301
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 301
+    file: null
+  - path: /.well-known/agent.json
+    status: 301
+    file: null
+  note: Every path 301s to the apex, which 404s it. No document is served here.
+- host: https://parceiro.agrolend.agr.br
+  server: Spring Boot partner-area backend
+  documents:
+  - path: /.well-known/security.txt
+    status: 401
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 401
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 401
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 401
+    file: null
+  - path: /.well-known/api-catalog
+    status: 401
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 401
+    file: null
+  - path: /.well-known/aauth-resource.json
+    status: 401
+    file: null
+  - path: /.well-known/apis.json
+    status: 401
+    file: null
+  - path: /apis.json
+    status: 401
+    file: null
+  - path: /apis.yml
+    status: 401
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 401
+    file: null
+  - path: /.well-known/agent.json
+    status: 401
+    file: null
+  soft_404_control:
+    path: /.well-known/agrolend-negative-control-7f3ab91c.json
+    status: 401
+    bytes: 143
+    note: >-
+      HTTP Basic auth is applied in front of routing, so every path - real or invented - returns the
+      same 401 envelope. No discovery document can be read anonymously on this host.

@@ -1,0 +1,88 @@
+generated: '2026-09-13'
+method: searched
+source: https://agrolend.agr.br/relatorios/
+note: >-
+  Agrolend publishes no machine-readable contract, so no standard here is asserted from a
+  specification. Every entry below is evidenced either from a first-party published policy document
+  or from a probe of an external registry. Technical API standards are recorded as not assessable
+  rather than false, because there is no contract to read them out of - an honest distinction.
+regulatory_regime:
+  sector: financial services - agricultural credit
+  jurisdiction: Brazil
+  regulator: Banco Central do Brasil
+  entity: Agrolend Sociedade de Credito, Financiamento e Investimento S/A
+  cnpj: 43.774.196/0001-84
+  nire: '35300578171'
+  institution_type: SCFI (sociedade de credito, financiamento e investimento)
+  evidence: >-
+    Legal entity name, CNPJ and NIRE are stated in the site footer on every page and on the cover of
+    the Politica de Cookies PDF; FGC coverage of the LCA notes is stated on the LCA Agrolend page.
+standards:
+- id: bcb-scfi-authorization
+  conforms: true
+  evidence: >-
+    Operates as an authorised Sociedade de Credito, Financiamento e Investimento, named as such in
+    the footer of https://agrolend.agr.br/quem-somos/ with CNPJ 43.774.196/0001-84.
+- id: bcb-aml-pld
+  conforms: true
+  evidence: https://agrolend.agr.br/wp-content/uploads/2025/08/AGROLEND-PLD_AGO2025.pdf
+- id: bcb-cybersecurity-policy
+  conforms: true
+  evidence: https://agrolend.agr.br/wp-content/uploads/2026/07/AGROLEND-CIBERSEGURANCA_FEV26.pdf
+  note: >-
+    Politica de Seguranca Cibernetica e Tratamento de Dados, dated February 2026 - the published
+    cybersecurity and data-handling policy expected of a BCB-regulated institution.
+- id: bcb-prsac
+  conforms: true
+  evidence: https://agrolend.agr.br/wp-content/uploads/2025/08/Agrolend-PRSAC_AGO2025.pdf
+  note: Politica de Responsabilidade Social, Ambiental e Climatica, August 2025.
+- id: audited-financial-statements
+  conforms: true
+  evidence: >-
+    Semiannual demonstracoes contabeis published as PDF from 2021 through 31-12-2025 at
+    https://agrolend.agr.br/relatorios/
+- id: fgc-deposit-guarantee
+  conforms: true
+  evidence: >-
+    LCA notes are stated to carry Fundo Garantidor de Credito protection up to the defined limits at
+    https://agrolend.agr.br/lca-agrolend/
+- id: open-finance-brasil
+  conforms: false
+  evidence: >-
+    Probed the Open Finance Brasil participant directory
+    (https://data.directory.openbankingbrasil.org.br/participants, HTTP 200, 107 organisations) on
+    2026-09-13. Neither the name "Agrolend" nor the CNPJ 43774196 appears, so Agrolend holds no
+    authorisation server and publishes no FAPI-conformant regulated API under the Open Finance
+    Brasil regime.
+- id: lgpd
+  conforms: unknown
+  evidence: >-
+    A Politica de Cookies is published
+    (https://agrolend.agr.br/wp-content/uploads/2025/08/AGROLEND-COOKIES_AGO2025.pdf) and the
+    cybersecurity policy covers data handling, but no standalone LGPD privacy policy and no named
+    data-protection officer were found on the public site.
+- id: oauth2
+  conforms: not-assessable
+  evidence: >-
+    parceiro.agrolend.agr.br challenges with WWW-Authenticate: Basic, not Bearer, and serves no
+    OAuth or OIDC discovery document. No OAuth surface is observable anonymously.
+- id: openapi
+  conforms: false
+  evidence: >-
+    No OpenAPI or Swagger document at any probed location on agrolend.agr.br,
+    parceiro.agrolend.agr.br, docs.agrolend.agr.br or portal.agrolend.agr.br.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: >-
+    The partner backend returns the default Spring Boot error envelope
+    ({"timestamp","status","error","path"}) as application/json, not application/problem+json.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on agrolend.agr.br.
+domain_standard:
+  assessed: true
+  result: none-declared
+  note: >-
+    The domain standard that would apply to a Brazilian regulated lender is Open Finance Brasil
+    (FAPI-BR profile). The participant-directory probe above is a definitive negative, so no domain
+    standard is claimed. Reward-only: the absence is recorded, not penalised.

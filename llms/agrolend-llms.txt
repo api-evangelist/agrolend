@@ -1,0 +1,66 @@
+# Agrolend
+
+> Agrolend Sociedade de Credito, Financiamento e Investimento S/A (CNPJ 43.774.196/0001-84) is a
+> Banco Central do Brasil regulated agricultural-credit fintech in Sao Paulo, founded in 2020. It
+> originates working capital, receivables discount, liability extension and inter-chain credit for
+> small and mid-sized Brazilian rural producers, distributed through agricultural retailers,
+> cooperatives and input industries, and funded in part through FGC-covered LCA notes sold on
+> third-party investment platforms.
+
+## Status of the API surface
+
+Agrolend publishes **no developer portal, no API reference, no SDK and no machine-readable
+contract**. Probed 2026-09-13:
+
+- No OpenAPI, Swagger, GraphQL SDL, AsyncAPI, Protobuf or WSDL at any location on any Agrolend host.
+- No /llms.txt, no /apis.json, no /.well-known/ document of any kind (all 404).
+- No A2A agent card and no MCP server.
+- No first-party package on npm, PyPI, RubyGems or crates.io. The GitHub organisation exists but is
+  empty.
+- Not a participant in Open Finance Brasil, so no FAPI-BR regulated API either.
+
+The only API host reachable from the public internet is `parceiro.agrolend.agr.br`, a Spring Boot
+partner-area backend that answers HTTP 401 with `WWW-Authenticate: Basic` on every path. Two further
+hosts, `docs.agrolend.agr.br` and `portal.agrolend.agr.br`, resolve to a load balancer that returns
+504 behind a wildcard certificate that expired 2025-03-06.
+
+An agent cannot integrate with Agrolend today. Partnership is the only documented route in, via the
+registration form.
+
+## Company
+
+- [Quem Somos](https://agrolend.agr.br/quem-somos/): company, team and mission.
+- [Who We Are (English)](https://agrolend.agr.br/en/who-we-are/): English version.
+- [Credito Agrolend](https://agrolend.agr.br/credito-agrolend/): the five credit products.
+- [LCA Agrolend](https://agrolend.agr.br/lca-agrolend/): the FGC-covered funding instrument.
+- [Seja Nosso Parceiro](https://agrolend.agr.br/seja-nosso-parceiro/): partner registration form.
+- [Contato](https://agrolend.agr.br/contato/): contact, Sao Paulo address, ouvidoria 0800 5914608.
+- [Investidores](https://agrolend.agr.br/investidores/): the investor roster.
+- [ESG](https://agrolend.agr.br/esg/): social and environmental positioning.
+
+Note: the site root `https://agrolend.agr.br/` returns an infinite HTTP 301 self-redirect. Link to
+an interior page; the homepage cannot be fetched.
+
+## Governance and compliance
+
+- [Relatorios e Politicas](https://agrolend.agr.br/relatorios/): the policy and financials hub.
+- [Politica de Seguranca Cibernetica e Tratamento de Dados, February 2026](https://agrolend.agr.br/wp-content/uploads/2026/07/AGROLEND-CIBERSEGURANCA_FEV26.pdf)
+- [Politica de Prevencao a Lavagem de Dinheiro, August 2025](https://agrolend.agr.br/wp-content/uploads/2025/08/AGROLEND-PLD_AGO2025.pdf)
+- [Codigo de Conduta, August 2025](https://agrolend.agr.br/wp-content/uploads/2025/08/AGROLEND-CODIGODECONDUTA_AGO2025.pdf)
+- [Politica de Responsabilidade Social, Ambiental e Climatica, August 2025](https://agrolend.agr.br/wp-content/uploads/2025/08/Agrolend-PRSAC_AGO2025.pdf)
+- [Politica de Cookies, August 2025](https://agrolend.agr.br/wp-content/uploads/2025/08/AGROLEND-COOKIES_AGO2025.pdf)
+- Audited demonstracoes contabeis, semiannual, 2021 through 31-12-2025, linked from the same page.
+
+## Publications
+
+- [Informativo Agrolend](https://agrolend.agr.br/informativo-agrolend/): monthly agricultural market
+  commentary as PDF. Last issue November 2024.
+- [Agrolend na Midia](https://agrolend.agr.br/agrolend-na-midia/): press coverage.
+
+## API Evangelist profile artifacts
+
+- [conformance/agrolend-conformance.yml](conformance/agrolend-conformance.yml)
+- [security/agrolend-domain-security.yml](security/agrolend-domain-security.yml)
+- [well-known/agrolend-well-known.yml](well-known/agrolend-well-known.yml)
+- [plans/agrolend-plans-pricing.yml](plans/agrolend-plans-pricing.yml)
+- [rate-limits/agrolend-rate-limits.yml](rate-limits/agrolend-rate-limits.yml)

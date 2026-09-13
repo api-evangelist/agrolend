@@ -1,0 +1,74 @@
+generated: '2026-09-13'
+method: probed
+source: live DNS/TLS/HTTP probes of every agrolend.agr.br host discovered this pass
+note: >-
+  Rewritten by hand after 0-working/probe-domain-security.py resolved the registrable domain to
+  "agr.br". "agr.br" is a Brazilian public suffix, not a registrable domain, so the script queried
+  the wrong zone and recorded spf:false / dmarc:false when agrolend.agr.br in fact publishes both
+  (DMARC p=reject). The registrable domain here is agrolend.agr.br. See the "registrable domain
+  needs psl" guardrail.
+hosts:
+- host: agrolend.agr.br
+  role: marketing site (WordPress 6.7.7 behind CloudFront)
+  https: true
+  tls_version: TLSv1.3
+  cert_subject: CN=agrolend.agr.br
+  cert_expires: '2026-11-15'
+  hsts: false
+  hsts_max_age: null
+  note: >-
+    The site root returns an infinite HTTP 301 self-redirect (Location: https://agrolend.agr.br/,
+    x-redirect-by: WordPress), so the homepage is unreachable to any client that follows redirects.
+    Interior pages (/quem-somos/, /relatorios/, /en/who-we-are/) serve 200 normally. /index.php/<slug>/
+    301s to the internal origin hostname site-agrolend-639104121.us-east-1.elb.amazonaws.com,
+    leaking the load balancer behind CloudFront.
+- host: parceiro.agrolend.agr.br
+  role: partner-area application backend (Spring Boot; JSON error envelope)
+  https: true
+  tls_version: TLSv1.3
+  cert_subject: CN=*.agrolend.agr.br
+  cert_expires: '2026-10-08'
+  hsts: true
+  hsts_max_age: 31536000
+  hsts_include_subdomains: true
+  note: >-
+    Answers HTTP 401 with WWW-Authenticate: Basic realm="Realm" on every path probed, including
+    /.well-known/*, /openapi.json, /graphql and a negative-control path. /v3/api-docs, /v2/api-docs
+    and /swagger-ui/* return 401 or 404 with no specification body, so springdoc is not exposed.
+- host: docs.agrolend.agr.br
+  role: abandoned documentation host
+  https: true
+  tls_version: TLSv1.2
+  cert_subject: CN=*.agrolend.agr.br
+  cert_expires: '2025-03-06'
+  cert_expired: true
+  hsts: false
+  http_status: 504
+  note: >-
+    Resolves to agrolend-alb-dmz-apps-980323442.us-east-1.elb.amazonaws.com and serves a wildcard
+    certificate that expired 2025-03-06; the load balancer returns 504 Gateway Time-out, so no
+    backend is healthy. Dead infrastructure still holding a DNS name and an expired certificate.
+- host: portal.agrolend.agr.br
+  role: abandoned portal host
+  https: true
+  tls_version: TLSv1.2
+  cert_subject: CN=*.agrolend.agr.br
+  cert_expires: '2025-03-06'
+  cert_expired: true
+  hsts: false
+  http_status: 504
+  note: Same dead ALB and same expired 2025-03-06 wildcard certificate as docs.agrolend.agr.br.
+domains:
+- domain: agrolend.agr.br
+  dnssec: false
+  ds_records: []
+  caa: []
+  spf: true
+  spf_record: v=spf1 include:_spf.google.com -all
+  dmarc: true
+  dmarc_policy: reject
+  dmarc_record: v=DMARC1; p=reject; sp=reject; rua=mailto:infra@agrolend.agr.br; adkim=s; aspf=s; pct=100; fo=1
+findings:
+- Email authentication is strong - SPF with a hard fail and DMARC p=reject with strict alignment.
+- No CAA records and no DNSSEC on the zone.
+- Two subdomains (docs, portal) serve certificates that expired eighteen months ago over TLS 1.2.

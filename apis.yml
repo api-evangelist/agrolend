@@ -1,17 +1,36 @@
 aid: agrolend
 name: Agrolend
-description: 'Agrolend is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  Agrolend is a Brazilian agricultural-credit fintech — legally Agrolend Sociedade de Credito,
+  Financiamento e Investimento S/A (CNPJ 43.774.196/0001-84), a Banco Central do Brasil regulated
+  SCFI headquartered in Sao Paulo. Founded in 2020, it originates working capital, receivables
+  discount, liability-extension and inter-chain credit for small and mid-sized rural producers,
+  distributing through agricultural retailers, cooperatives and input industries rather than direct
+  to farm, and funds the book partly through FGC-covered LCA notes sold on third-party investment
+  platforms. Its stated differentiator is a cloud-native, AI-assisted credit engine that underwrites
+  without requiring farm or grain collateral. Agrolend publishes no developer portal, no API
+  reference and no machine-readable contract; the only API surface reachable from the public
+  internet is the partner-area backend at parceiro.agrolend.agr.br, which answers HTTP Basic 401 on
+  every path.
 url: https://raw.githubusercontent.com/api-evangelist/agrolend/refs/heads/main/apis.yml
+image: https://agrolend.agr.br/wp-content/uploads/2023/05/Logo-Agrolend.png
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-09-13'
 modified: '2026-09-13'
+position: Producing
 tags:
 - Company
+- Agriculture
+- Agtech
+- Financial Services
+- Lending
+- Credit
+- Fintech
+- Brazil
+- Rural Finance
+- Banking
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -20,4 +39,58 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://equityzen.com/company/agrolend
+  name: Agrolend (site root 301-loops; this is the live About page)
+  url: https://agrolend.agr.br/quem-somos/
+- type: Support
+  name: Contato
+  url: https://agrolend.agr.br/contato/
+- type: GitHubOrganization
+  name: Agrolend on GitHub (0 public repositories)
+  url: https://github.com/Agrolend
+- type: Blog
+  name: Informativo Agrolend - monthly market newsletter, PDF archive (last issue November 2024)
+  url: https://agrolend.agr.br/informativo-agrolend/
+- type: Compliance
+  name: Relatorios e Politicas - audited financial statements, AML/PLD, conduct, PRSAC, cybersecurity
+  url: https://agrolend.agr.br/relatorios/
+- type: Security
+  name: Politica de Seguranca Cibernetica e Tratamento de Dados (February 2026)
+  url: https://agrolend.agr.br/wp-content/uploads/2026/07/AGROLEND-CIBERSEGURANCA_FEV26.pdf
+- type: Conformance
+  url: conformance/agrolend-conformance.yml
+- type: DomainSecurity
+  url: security/agrolend-domain-security.yml
+- type: LLMsTxt
+  url: llms/agrolend-llms.txt
+- type: Plans
+  url: plans/agrolend-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/agrolend-rate-limits.yml
+x-enrichment:
+  date: '2026-09-13'
+  status: minimal
+  artifacts_added: 6
+  pass: local-v3
+x-coverage:
+  state: gated
+  reason: partner-login
+  detail: >-
+    The only Agrolend API host, parceiro.agrolend.agr.br, sits behind blanket HTTP Basic auth and
+    returns 401 with WWW-Authenticate: Basic on every path including /v3/api-docs and /openapi.json,
+    while the docs.agrolend.agr.br and portal.agrolend.agr.br subdomains that would have carried the
+    reference have been dead since their wildcard certificate expired on 2025-03-06 and now return
+    504 from an empty load balancer.
+  evidence:
+  - url: https://parceiro.agrolend.agr.br/
+    status: 401
+  - url: https://parceiro.agrolend.agr.br/v3/api-docs.yaml
+    status: 401
+  - url: https://docs.agrolend.agr.br/
+    status: 504
+  - url: https://portal.agrolend.agr.br/
+    status: 504
+  - url: https://agrolend.agr.br/.well-known/api-catalog
+    status: 404
+  - url: https://data.directory.openbankingbrasil.org.br/participants
+    status: 200
+  checked: '2026-09-13'

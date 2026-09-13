@@ -1,0 +1,19 @@
+generated: '2026-09-13'
+method: searched
+source: https://agrolend.agr.br/credito-agrolend/
+plan_count: 0
+note: >-
+  Agrolend publishes no pricing page, no plans and no rate card. Credit is quoted per operation
+  through a partnership motion: the public site lists five credit products (Escalabilidade no Agro,
+  Capital de Giro, Desconto de Recebiveis, Alongamento do Passivo, Credito Intercadeia) and routes
+  every commercial conversation through the partner registration form at
+  https://agrolend.agr.br/seja-nosso-parceiro/. There is no API product and therefore no API pricing
+  of any kind. The only quantitative figures published are volume statistics - R$2 bilhoes granted,
+  300 corporate clients, 10 mil producers - which are traction numbers, not a price list.
+plans: []
+products_referenced:
+- name: Escalabilidade no Agro
+- name: Capital de Giro
+- name: Desconto de Recebiveis
+- name: Alongamento do Passivo
+- name: Credito Intercadeia

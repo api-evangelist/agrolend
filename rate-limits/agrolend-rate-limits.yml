@@ -1,0 +1,14 @@
+generated: '2026-09-13'
+method: probed
+source: https://parceiro.agrolend.agr.br/
+limit_count: 0
+note: >-
+  No published rate limits, because there is no published API. The only reachable API host,
+  parceiro.agrolend.agr.br, returns HTTP 401 with WWW-Authenticate: Basic on every path and emits no
+  RateLimit-*, X-RateLimit-* or Retry-After header on that response. Roughly thirty unauthenticated
+  requests were issued to that host during this pass without any throttling, 429 or Retry-After
+  being observed, so no runtime rate-limit signal is exposed anonymously. Whether limits exist
+  behind the credential wall cannot be established from the public surface.
+limits: []
+response_headers_observed: []
+exhaustion_status: null
