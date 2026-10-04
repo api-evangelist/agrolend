@@ -24,7 +24,7 @@ tags:
 - Company
 - Agriculture
 - AgTech
-- Financial-Services
+- Financial Services
 - Lending
 - Credit
 - Fintech
@@ -42,6 +42,7 @@ tags_raw:
 - Brazil
 - Rural Finance
 - Banking
+- Financial-Services
 apis: []
 maintainers:
 - FN: Kin Lane
