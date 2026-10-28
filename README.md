@@ -64,5 +64,96 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Agrolend is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://equityzen.com/company/agrolend
+Agrolend is a Brazilian agricultural-credit fintech — legally Agrolend Sociedade de Credito, Financiamento e Investimento S/A (CNPJ 43.774.196/0001-84), a Banco Central do Brasil regulated SCFI headquartered in Sao Paulo. Founded in 2020, it originates working capital, receivables discount, liability-extension and inter-chain credit for small and mid-sized rural producers, distributing through agricultural retailers, cooperatives and input industries rather than direct to farm, and funds the book partly through FGC-covered LCA notes sold on third-party investment platforms. Its stated differentiator is a cloud-native, AI-assisted credit engine that underwrites without requiring farm or grain collateral. Agrolend publishes no developer portal, no API reference and no machine-readable contract; the only API surface reachable from the public internet is the partner-area backend at parceiro.agrolend.agr.br, which answers HTTP Basic 401 on every path.
+
+**Areas:** Company · Agriculture · AgTech · Financial Services · Lending · Credit · Fintech · Brazil · Rural Finance · Banking
+
+## Agrolend on APIs.io
+
+Everything profiled for Agrolend is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/agrolend/](https://apis.io/providers/agrolend/)** — or go straight to one of the APIs or properties below.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Agrolend Domain Security](https://apis.io/security/agrolend/agrolend-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Agrolend Plans Pricing](https://apis.io/plans/agrolend/agrolend-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Agrolend Rate Limits](https://apis.io/rate-limits/agrolend/agrolend-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://agrolend.agr.br/quem-somos/)
+- [Support](https://agrolend.agr.br/contato/)
+- [Blog](https://agrolend.agr.br/informativo-agrolend/)
+- [Security](https://agrolend.agr.br/wp-content/uploads/2026/07/AGROLEND-CIBERSEGURANCA_FEV26.pdf)
+- [Compliance](https://agrolend.agr.br/relatorios/)
+- [GitHub](https://github.com/Agrolend)
+
+## API Evangelist rating
+
+**Kin Score 11.6** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 55.4 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 15.8 |
+| Developer ergonomics | 7.1 |
+| Access clarity | 7.9 |
+
+**Agent readiness 2.5** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 12.6** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/agrolend/](https://apis.io/providers/agrolend/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Agrolend: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/agrolend/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
